@@ -38,16 +38,13 @@ def index():
 
 @app.route('/api/distances')
 def already_calculated():
-    starttime = datetime.now()
     result = list(map(lambda x: {
                     'requested_at': x['requested_at'],
                     'result_distance': x['result_distance'],
                     'start_point': x['start_point'],
                     'end_point': x['end_point']        
     }, distances))
-    end = datetime.now()
     return result
-    print(f'result given in {end - starttime} secondes')
 
 @app.route('/api/distance', methods=['POST', 'GET', 'PUT'])
 def Calculate():
